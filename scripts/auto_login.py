@@ -245,10 +245,15 @@ class AutoLogin:
                     self.log(f"从路径检测到区域: {region}", "SUCCESS")
                     return region
             
-            self.log(f"未检测到特定区域，使用当前域名: {host}", "INFO")
+            
+            self.log(f"未检测到特定区域，使用默认域名: {host}", "INFO")
             # 如果没有检测到区域，使用当前 URL 的基础部分
-            self.region_base_url = f"{parsed.scheme}://{parsed.netloc}"
-            return None
+            # self.region_base_url = f"{parsed.scheme}://{parsed.netloc}"
+            region = f"eu-central-1"
+            self.detected_region = region
+            self.region_base_url = f"https://{region}.run.claw.cloud"
+            return region
+            # return None
             
         except Exception as e:
             self.log(f"区域检测异常: {e}", "WARN")
