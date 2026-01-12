@@ -249,7 +249,7 @@ class AutoLogin:
             self.log(f"未检测到特定区域，使用默认域名: {host}", "INFO")
             # 如果没有检测到区域，使用当前 URL 的基础部分
             # self.region_base_url = f"{parsed.scheme}://{parsed.netloc}"
-            region = f"eu-central-1"
+            region = f"ap-northeast-1"
             self.detected_region = region
             self.region_base_url = f"https://{region}.run.claw.cloud"
             return region
